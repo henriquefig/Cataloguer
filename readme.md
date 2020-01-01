@@ -6,4 +6,4 @@ After the pretended configuration is made, a public link for the catalogues beco
 
 ### License
 
-The README converter is free software licensed under the MIT license.
+The Cataloguer is free software licensed under the MIT license.
