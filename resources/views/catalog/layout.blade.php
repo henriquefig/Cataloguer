@@ -32,7 +32,6 @@
                         @elseif($headers[$i]->type=='image')
                             @if($count_img==0)
                                 <div id='carousel' style='{{$headers[$i]->styles}}' >
-                                    <b>{{ __('Images') }} </b>
                             @endif
                                 <div id='img_wrapper' class='drag_resize' style='height:100%;width:100%;
                                     @if($count_img!=0)
@@ -43,10 +42,10 @@
                                     <i class='fa fa-cog' style='float:right' onclick='config_header(this)'></i>
                                     <span class='crop' id='{{ str_replace(array(' ','?','#',':',';',',','=','.'),'',$headers[$i]->name) }}_{{ $headers[$i]->cat_field_id}}'  style='background-image:url("{{$examp[$i]->value}}")' ></span>
                                     
-                                <div class='but_style'>
-                                <a class="prev" onclick="plusDivs(-1,this)">&#10094;</a>
-                                <a class="next" style='margin-right:5px' onclick="plusDivs(1,this)">&#10095;</a>
-                                </div>
+                                    <div class='but_style'>
+                                        <a class="prev" onclick="plusDivs(-1,this)">&#10094;</a>
+                                        <a class="next" style='margin-right:5px' onclick="plusDivs(1,this)">&#10095;</a>
+                                    </div>
                                 </div>
                             @if($count_img==count($headers)-1)
                                 </div>

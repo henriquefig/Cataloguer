@@ -466,7 +466,7 @@ function save_changes_entry()
         }
     })
 }
-function searchcatalog(evt)
+function searchcatalog()
 {
 	let word=$("#search").val();
   	$.ajax({
@@ -495,7 +495,8 @@ function searchcatalog(evt)
     		$('#sorting').change()
         },
         error:function(e){
-        	console.log(e)
+        	$("#product_zone .product_ul").empty()
+        	$("#last_product_id").val(0)
         }
     })
 }
@@ -577,7 +578,7 @@ function page_layout()
     })
 }
 
-function searchcatalogG(evt)
+function searchcatalogG()
 {
 	let word=$("#search").val();
   	$.ajax({
@@ -604,10 +605,14 @@ function searchcatalogG(evt)
     		$("#infinite_scroll").val(word)
         	$("#last_product_id").val(r.marker)
         	$('#sorting').change()
+			if($("#img_wrapper").length>0)
+    			fixcarouselimgs()
         	//$(".py-4 .col-md-9 ul").html(myans)
         },
         error:function(e){
-        	console.log(e)
+        	$("#product_zone .product_ul").empty()
+        	$("#last_product_id").val(0)
+
         }
     })
 }

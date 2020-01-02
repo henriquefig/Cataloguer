@@ -535,7 +535,7 @@ dialog{
   width: 30%;
   z-index: 1000;
   color:white;
-  border: 1px solid #c52121;
+  border: 1px solid #ff9000e6;
   box-shadow: 0 0 0 0.1rem rgba(197, 33, 33, .25);
 }
 .notification .fa{

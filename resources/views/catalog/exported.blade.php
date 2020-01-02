@@ -65,10 +65,10 @@
                     @endfor
                 </select>&nbsp;&nbsp;&nbsp;
                 <label for='search'><b>{{ __('Search') }}</b>&nbsp;<i class="fa fa-search"></i></label>
-                <input type='text' id='search' name='search' onkeyup='return searchcatalogG(event)' class="form-control" style="display:inline" />
+                <input type='text' id='search' name='search' placeholder='{{ __('Search for (a) product(s)') }}' onkeyup='delay(searchcatalogG,750)' class="form-control" style="display:inline" />
 
             </div>
-            <h2>{{$cat_title}}</h2>
+            <h2 style='margin-left: 2vw;'>{{$cat_title}}</h2>
             <hr />
                 <br><br>
                 @php
@@ -175,10 +175,8 @@
                 <div class='col-md-3'></div>
                 <div class='col-md-6'>
                     <!-- Remove inline CSS -->
-                     <label style='font-size: 11px;font-weight: normal;'> Powered by Altec-IS &copy; 2019,&nbsp;{{ __('All Rights Reserved')  }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="mailto:info@altec-is.pt" >info@altec-is.pt</a>
+                     <label style='font-size: 14px;font-weight: normal;'>  &copy;2019 Henrique Figueiredo,&nbsp;{{ __('All Rights Reserved')  }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="mailto:nf.henrique@gmail.com" >nf.henrique@gmail.com</a>
                     </label>
-                    <!--
-                     <iframe id="gmapsiframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d893.372415907623!2d-8.645678414989375!3d41.13595258507175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2465426d0cdb15%3A0x676b1f1d888de7d2!2sRua+de+Bustes+682%2C+4400-392+Canidelo!5e0!3m2!1spt-PT!2spt!4v1523608479302" width="550" height="220" frameborder="0" allowfullscreen=""></iframe>-->
                  </div>
                 <div class='col-md-3'></div>
 

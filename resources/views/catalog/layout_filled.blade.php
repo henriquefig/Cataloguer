@@ -4,10 +4,10 @@
     <a href='{{ asset('imgs/sample_layout.png') }}'> {{ __('the example') }}.&nbsp;&nbsp;</a> 
    {{ __('To revert to the pre-set sizes, click on these buttons') }}    --></strong>
 <div id='searchbox'>
-    <span title='{{ __('Display the products in 4 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-9 li').css('width','22.5%')"><i class="fa fa-lg fa-grid" aria-hidden="true"></i></span>
-    <span title='{{ __('Display the products in 3 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-9 li').css('width','30.5%')"><i class="fa fa-lg fa-th" aria-hidden="true"></i></span>
-    <span title='{{ __('Display the products in 2 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-9 li').css('width','47.5%')"><i class="fa fa-lg fa-th-large" aria-hidden="true"></i></span>
-    <span title='{{ __('Display the products in 1 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-9 li').css('width','100%')"><i class="fa fa-lg fa-bars" aria-hidden="true"></i></span>
+    <span title='{{ __('Display the products in 4 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-10 li').css('width','22.5%')"><i class="fa fa-lg fa-grid" aria-hidden="true"></i></span>
+    <span title='{{ __('Display the products in 3 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-10 li').css('width','30.5%')"><i class="fa fa-lg fa-th" aria-hidden="true"></i></span>
+    <span title='{{ __('Display the products in 2 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-10 li').css('width','47.5%')"><i class="fa fa-lg fa-th-large" aria-hidden="true"></i></span>
+    <span title='{{ __('Display the products in 1 columns per row')}}' style='margin: 0 3px 0 3px;' onclick="$('.col-md-10 li').css('width','100%')"><i class="fa fa-lg fa-bars" aria-hidden="true"></i></span>
 </div>
 <div class='row'>
               
@@ -24,7 +24,7 @@
                         @if($headers[$i]->type=='header')
                             <div class='card-header drag_resize
                             @if($headers[$i]->visibility==0)
-                            inv
+                                inv
                             @endif
                             ' style='border:0px!important;{{ $headers[$i]->styles }}' align='center' id='{{ str_replace(array(' ','?','#',':',';',',','=','.'),'',$headers[$i]->name) }}_{{ $headers[$i]->cat_field_id}}'><b>{{ $headers[$i]->name }}</b>:&nbsp;{{$examp[$i]->value}}&nbsp;<i class='fa fa-cog' onclick='config_header(this)' 
                            
@@ -75,7 +75,7 @@
                         </script>
                         @endif
                     @endfor
-                     <script class='removal'>$(".img_div0").wrapAll("<div id='carousel' class='drag_resize' style='"+$(".img_div0").attr('data')+"'></div>").parent().prepend('<b>Images</b>');$(".removal").remove()</script>
+                     <script class='removal'>$(".img_div0").wrapAll("<div id='carousel' class='drag_resize' style='"+$(".img_div0").attr('data')+"'></div>");$(".removal").remove()</script>
                 </div>
             </li>
         </ul>

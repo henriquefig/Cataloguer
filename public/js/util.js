@@ -139,3 +139,14 @@ function notification(msg,type='success')
 		$("#notification").fadeOut(250);
 	},5000)
 }
+function delay(callback, ms) {
+	var timer = 0;
+	timer = setTimeout(function () {
+  		callback();
+	}, ms || 0);
+	while(timer-1>=0)
+	{
+		clearTimeout(timer-1);
+		timer--;
+	}
+}

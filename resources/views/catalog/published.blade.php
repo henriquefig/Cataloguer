@@ -15,7 +15,7 @@
             @endfor
         </select>&nbsp;&nbsp;&nbsp;
         <label for='search'><b>{{ __('Search') }}</b>&nbsp;<i class="fa fa-search"></i></label>
-        <input type='text' id='search' class="form-control" style="display:inline" name='search' onkeyup='return searchcatalog(event)' placeholder='{{ __('Press enter to search for (a) product(s)') }}' />
+        <input type='text' id='search' class="form-control" style="display:inline" name='search' onkeyup='delay(searchcatalog,750)' placeholder='{{ __('Search for (a) product(s)') }}' />
 
     </div>
 <h2>{{$cat_title}}</h2>

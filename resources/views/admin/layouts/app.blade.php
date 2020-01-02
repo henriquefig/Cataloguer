@@ -85,16 +85,16 @@
                                     <i class='fa fa-bars'></i>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style='width: 100%;'>
-                                        <a class='text-muted dropdown-item' href='#' onclick='newcatalog()'>{{ __('Import a catalog') }}</a>
-                                        <a class='text-muted dropdown-item' href='#' onclick='mapping()'>{{ __('Catalog mapping') }}</a>
-                                        <a class='text-muted dropdown-item' href='#' onclick='listcatalog()'>{{ __('My catalog entries') }}</a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class='text-muted dropdown-item' href='#' onclick='newcatalog()'>{{ __('Import a catalogue') }}</a>
+                                        <a class='text-muted dropdown-item' href='#' onclick='mapping()'>{{ __('Catalogue mapping') }}</a>
+                                        <a class='text-muted dropdown-item' href='#' onclick='listcatalog()'>{{ __('My catalogue entries') }}</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class='text-muted dropdown-item' href='#' onclick='page_layout()'>{{ __('Catalog layout') }}</a>
+                                        <a class='text-muted dropdown-item' href='#' onclick='page_layout()'>{{ __('Catalogue layout') }}</a>
                                         <a class='text-muted dropdown-item' href='#' onclick='layouter()'>{{ __('Products\' layout') }}</a>
                                        <div class="dropdown-divider"></div>
-                                        <a class='text-muted dropdown-item' href='#' onclick='publish()'>{{ __('My published catalog') }}</a>
-                                        <a target='_blank' class='text-muted dropdown-item' href='{{str_replace("home","exported?u_id=".Auth::id(),Request::url())}}'>{{ __('Catalog public link') }}</a>
+                                        <a class='text-muted dropdown-item' href='#' onclick='publish()'>{{ __('My published catalogue') }}</a>
+                                        <a target='_blank' class='text-muted dropdown-item' href='{{str_replace("home","exported?u_id=".Auth::id(),Request::url())}}'>{{ __('Catalogue public link') }}</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

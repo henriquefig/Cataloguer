@@ -3,7 +3,8 @@
 <table class='table'>
     <thead>
         @for($i=0;$i<count($headers);$i++)
-            <th>{{ $headers[$i]->name }}
+            <th>
+                {{ $headers[$i]->name }}
             </th>
         @endfor
             <th>{{ __('Edit') }}</th>
@@ -19,7 +20,8 @@
                 @if(isset($entry[$i]))
                    <td style='margin:5px'
                     @if(strlen($entry[$i]['value'])>30)
-                        title='{{ $entry[$i]['value'] }}'><input type='hidden' value='{{ $entry[$i]['value'] }}' />{{substr($entry[$i]['value'],0,13) .'...'.substr($entry[$i]['value'],strlen($entry[$i]['value'])-4,strlen($entry[$i]['value'])-1)}}
+                        title='{{ $entry[$i]['value'] }}'>
+                        <input type='hidden' value='{{ $entry[$i]['value'] }}' />{{substr($entry[$i]['value'],0,13) .'...'.substr($entry[$i]['value'],strlen($entry[$i]['value'])-4,strlen($entry[$i]['value'])-1)}}
                     @else
                         > {{ $entry[$i]['value'] }}
                     @endif
@@ -31,7 +33,7 @@
                     @endif
                     </td>
                 @else
-                <td></td>
+                    <td></td>
                 @endif
             @endforeach
             <td align='center' id='edit_{{$i}}' onclick='edit_entry(this)'><i class='fa fa-pencil text-info' title={{ __('Edit entry') }}></i></td>
@@ -78,7 +80,7 @@
         </div>
 <dialog id='delete_dialog'>
     <section>
-  <h6 class="text-danger" style='font-weight:bolder;font-size:1.7875rem;'>{{ __('Warning') }}</h6>
+     <h6 class="text-danger" style='font-weight:bolder;font-size:1.7875rem;'>{{ __('Warning') }}</h6>
       <p>{{ __("You're permenantly deleting an entry from your catalog!") }}
       </p>
 

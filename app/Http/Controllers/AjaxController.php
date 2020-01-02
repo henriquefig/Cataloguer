@@ -68,6 +68,10 @@ class AjaxController extends Controller
         $catalog->user_id = Auth::id();
         $catalog->active = true;
         $catalog->save();
+
+        $layout = new Layout();
+        $layout->catalog_id = $catalog->id;
+        $layout->save();
         foreach($request->input('fields') as $field)
         {
             if(is_numeric($field))
@@ -212,7 +216,7 @@ class AjaxController extends Controller
             }
         }
 
-        return 'Jobi done or what ever';    
+        return 'done';    
     }
     public function upload(Request $request)
     {   
@@ -274,9 +278,9 @@ class AjaxController extends Controller
         $entry=Catalog_entries::where('cat_field_id','>=',$headers[0]->cat_field_id)->where('cat_field_id','<=',$headers[count($headers)-1]->cat_field_id)->orderBy('id','ASC')->limit(count($headers))->get();
         $layout=Layout::where('catalog_id',$catalog->id)->get()->toArray();
         if(count($layout)==0)
-        return view('catalog.layout',['headers' => $headers, 'examp' => $entry]);
+            return view('catalog.layout',['headers' => $headers, 'examp' => $entry]);
         else
-        return view('catalog.layout_filled',['headers' => $headers, 'examp' => $entry, 'layout' => $layout]);
+            return view('catalog.layout_filled',['headers' => $headers, 'examp' => $entry, 'layout' => $layout]);
 
     }
 
@@ -328,7 +332,7 @@ class AjaxController extends Controller
         $layout=Layout::where('catalog_id',$catalog->id)->get()->toArray();
         if($request->input('infinite_scroll')!='')
         {
-         $entries=DB::select('SELECT DISTINCT c2.* FROM catalog_entries c1 JOIN catalog_entries c2 ON c1.product_id=c2.product_id WHERE c2.product_id>'.$request->input('last_id').' AND  c1.value LIKE "%'.$request->input('infinite_scroll').'%" ORDER BY c2.id ASC LIMIT '.(15*count($headers)));
+            $entries=DB::table('catalog_entries as c1')->join('catalog_entries as c2','c1.product_id','c2.product_id')->join('products as p','p.id','c2.product_id')->where('p.catalog_id',$catalog->id)->where('c2.product_id','>',$request->input('last_id'))->where('c1.value','LIKE','%'.$request->input('infinite_scroll').'%')->distinct('c2.id')->take(15*count($headers))->orderBy('c2.id','ASC')->get(['c2.*']);
             return view('catalog.search',['entries' => $entries, 'headers' => $headers,'layout' => $layout]);
         }
         else
@@ -349,10 +353,10 @@ class AjaxController extends Controller
         $catalog=Catalog::where('user_id',Auth::id())->get()[0];
         $headers = Catalog_Fields::where('catalog_id',$catalog->id)->join('categories', 'catalog_fields.id', '=', 'categories.cat_field_id')->orderBy('catalog_fields.id')->get();
   
-        $search=DB::select('SELECT DISTINCT c2.* FROM catalog_entries c1 JOIN catalog_entries c2 ON c1.product_id=c2.product_id  JOIN products p ON p.id=c2.product_id WHERE p.catalog_id='. $catalog->id.' AND c1.value LIKE "%'.$request->input('search').'%" ORDER BY c2.id ASC LIMIT '.(15*count($headers)));
+        $search=DB::table('catalog_entries c1')->join('catalog_entries c2','c1.product_id','c2.product_id')->join('products p','p.id','c2.product_id')->where('p.catalog_id',$catalog->id)->where('c1.value','LIKE','%'.$request->input('search').'%')->distinct('c2.id')->take(15*count($headers))->orderBy('c2.id','ASC')->get(['c2.*']);
         
         $layout=Layout::where('catalog_id',$catalog->id)->get()->toArray();
-        return array('data' => view('catalog.search',['entries' => $search, 'headers' => $headers,'layout' => $layout])->render(),'marker' => end($search)->product_id);
+        return array('data' => view('catalog.search',['entries' => $search, 'headers' => $headers,'layout' => $layout])->render(),'marker' => $search->last()->product_id);
     }
     public function page_layout(Request $request)
     {
@@ -389,9 +393,9 @@ class AjaxController extends Controller
 
        $entry_group=Catalog_entries::where('product_id',$request->input('hidden_id'))->join('catalog_fields', 'catalog_entries.cat_field_id','=','catalog_fields.id')->select('catalog_entries.*','catalog_fields.name')->get();
        foreach ($entry_group as $i => $entry) {
-           if($request->input($entry->name)!=NULL)
+           if($request->input(str_replace(' ','_',$entry->name))!=NULL)
            {
-                Catalog_entries::where('id',$entry->id)->update(["value" => $request->input($entry->name)]);
+                Catalog_entries::where('id',$entry->id)->update(["value" => $request->input(str_replace(' ','_',$entry->name))]);
            }
        }
        return "done";
