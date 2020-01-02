@@ -12,7 +12,7 @@ After the pretended configuration is made, a public link for the catalogues beco
 
 To use Catalaguer you will need laravel 5.8 installed. After that just clone this repo into your machine by doing:
 
-	```git clone https://github.com/henriquefig/Cataloguer.git```
+```git clone https://github.com/henriquefig/Cataloguer.git```
 or using the "clone repository" button up top.
 
 Then go to the folder you've cloned the repository in and copy the ``` .env.example ``` to an ``` .env ``` file.
